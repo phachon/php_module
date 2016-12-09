@@ -12,8 +12,9 @@ class File {
 	/**
 	 * 调用
 	 * @param  string $className 类名
-	 * @param  string $arguments 参数
+	 * @param array|string $arguments 参数
 	 * @return object
+	 * @throws Exception
 	 */
 	public static function __callStatic($className, $arguments = array ()) {
 

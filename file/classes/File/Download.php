@@ -5,7 +5,6 @@
  */
 class File_Download {
 	
-
 	protected static $_instance = NULL;
 
 	/**

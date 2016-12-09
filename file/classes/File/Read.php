@@ -22,7 +22,8 @@ class File_Read {
 
 	/**
 	 * before
-	 * @return 
+	 * @param $fileUrl
+	 * @throws Exception
 	 */
 	private function _before($fileUrl) {
 		if($this->_fileName == NULL || $this->_fileName != $fileUrl) {

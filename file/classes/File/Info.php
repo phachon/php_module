@@ -24,7 +24,8 @@ class File_Info extends File {
 
 	/**
 	 * before
-	 * @param  string $fileUrl 
+	 * @param  string $fileUrl
+	 * @throws Exception
 	 */
 	private function _before($fileUrl) {
 		

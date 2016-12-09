@@ -4,20 +4,35 @@
  * @author phachon@163.com
  */
 class File_Upload {
-	
-	//文件上传的路径
+
+	/**
+	 * 文件上传的路径
+	 * @var string
+	 */
 	protected $_path = 'uploads/';
 
-	//文件上传允许的格式
+	/**
+	 * 文件上传允许的格式
+	 * @var array
+	 */
 	protected $_allowExt = array();
-	
-	//文件的最大限制(M)
+
+	/**
+	 * 文件的最大限制(M)
+	 * @var int
+	 */
 	protected $_maxSize = 5;
-	
-	//文件信息
+
+	/**
+	 * 文件信息
+	 * @var array
+	 */
 	private $_fileInfos = array();
-	
-	//对象
+
+	/**
+	 * 对象
+	 * @var null
+	 */
 	public static $instance = NULL;
 
 	/**
@@ -78,7 +93,8 @@ class File_Upload {
 
 	/**
 	 * 开始执行上传
-	 * @return array(); 
+	 * @return array
+	 * @throws Exception
 	 */
 	public function execute() {
 
@@ -141,11 +157,11 @@ class File_Upload {
 	private function _getUniName() {
 		return md5(uniqid(microtime(true), true));
 	}
-	
+
 	/**
 	 * 上传文件的核心函数
-     * @param Sting $filename
 	 * @return string
+	 * @throws Exception
 	 */
 	private function _uploadFile() {
 		

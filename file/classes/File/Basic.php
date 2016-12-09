@@ -9,7 +9,6 @@
  */
 class File_Basic {
 
-
 	protected static $_instance = NULL;
 
 	public static function instance() {
@@ -22,9 +21,10 @@ class File_Basic {
 
 	/**
 	 * 创建目录
-	 * @param  string $dir 
-	 * @param  string $code 
-	 * @return boolen
+	 * @param  string $dir
+	 * @param int|string $code
+	 * @return boolean
+	 * @throws Exception
 	 */
 	public function createDir($dir, $code = 0777) {
 		
@@ -42,10 +42,11 @@ class File_Basic {
 	}
 
 	/**
-	 * 创建文件 
-	 * @param  string $fileUrl  文件路径
+	 * 创建文件
+	 * @param  string $fileUrl 文件路径
 	 * @param  boolean $overWrite 是否覆盖
-	 * @return boolean
+	 * @return bool
+	 * @throws Exception
 	 */
 	public function createFile($fileUrl, $overWrite = FALSE) {
 
@@ -71,10 +72,11 @@ class File_Basic {
 
 	/**
 	 * 移动文件夹
-	 * @param  string  $oldDir    要移动的文件夹
-	 * @param  string  $newDir    目标文件夹
+	 * @param  string $oldDir 要移动的文件夹
+	 * @param  string $newDir 目标文件夹
 	 * @param  boolean $overWrite 是否覆盖
-	 * @return boolean
+	 * @return bool
+	 * @throws Exception
 	 */
 	public function moveDir($oldDir, $newDir, $overWrite = FALSE) {
 		$oldDir = str_replace('', '/', $oldDir);
@@ -116,10 +118,11 @@ class File_Basic {
 
 	/**
 	 * 移动文件
-	 * @param  string  $fileUrl    要移动的文件
-	 * @param  string  $newUrl     目标文件夹下文件
-	 * @param  boolean $overWrite  是否覆盖
-	 * @return boolean
+	 * @param  string $fileUrl 要移动的文件
+	 * @param  string $newUrl 目标文件夹下文件
+	 * @param  boolean $overWrite 是否覆盖
+	 * @return bool
+	 * @throws Exception
 	 */
 	public function moveFile($fileUrl, $newUrl, $overWrite = FALSE) {
 
@@ -147,7 +150,8 @@ class File_Basic {
 	/**
 	 * 删除文件
 	 * @param string $fileUrl
-	 * @return boolean
+	 * @return bool
+	 * @throws Exception
 	 */
 	public function deleteFile($fileUrl) {
 		if(file_exists($fileUrl)) {
@@ -163,7 +167,8 @@ class File_Basic {
 	/**
 	 * 删除文件夹
 	 * @param string $dirUrl
-	 * @return boolean
+	 * @return bool
+	 * @throws Exception
 	 */
 	public function deleteDir($dirUrl) {
 		$dirUrl = substr($dirUrl, -1) == '/' ? $dirUrl : $dirUrl . '/';
@@ -201,7 +206,8 @@ class File_Basic {
 	 * @param string $fileUrl
 	 * @param string $newUrl
 	 * @param boolean $overWrite
-	 * @return boolean
+	 * @return bool
+	 * @throws Exception
 	 */
 	public function copyFile($fileUrl, $newUrl, $overWrite = FALSE) {
 		if(!file_exists($fileUrl)) {
@@ -214,7 +220,7 @@ class File_Basic {
 		}
 		$dir = dirname($newUrl);
 		$this->createDir($dir);
-		//@to do copy file
+		//@todo copy file
 		try {
 			copy($fileUrl, $newUrl);
 		} catch (Exception $e) {
@@ -225,10 +231,11 @@ class File_Basic {
 
 	/**
 	 * 复制文件夹
-	 * @param  string $oldDir    
-	 * @param  string $newDir    
+	 * @param  string $oldDir
+	 * @param  string $newDir
 	 * @param  boolean $overWrite
-	 * @return boolean
+	 * @return bool
+	 * @throws Exception
 	 */
 	public function copyDir($oldDir, $newDir, $overWrite = FALSE) {
 		$oldDir = str_replace('', '/', $oldDir);
@@ -253,9 +260,9 @@ class File_Basic {
 				continue;
 			}
 			if(is_file($oldDir . $file)) {
-				$this->copyFile($old . $file, $newDir . $file, $overWrite);
+				$this->copyFile($oldDir . $file, $newDir . $file, $overWrite);
 			} elseif(is_dir($oldDir . $file)) {
-				$this->copyDir($old . $file, $newDir . $file, $overWrite);
+				$this->copyDir($oldDir . $file, $newDir . $file, $overWrite);
 			}
 		}
 		closedir($dir);

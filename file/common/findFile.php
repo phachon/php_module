@@ -7,7 +7,7 @@
 /**
  * 取得输入目录所包含的所有目录和文件夹
  * @param  String $dir 查找的目录
- * @return Array       关联数组返回
+ * @return array       关联数组返回
  */
 function deepScanDirAndFiles($dir) {
 
@@ -36,7 +36,7 @@ function deepScanDirAndFiles($dir) {
 /**
  * 取得输入目录所包含的所有文件
  * @param  String $dir 查找的目录
- * @return Array       数组
+ * @return array       数组
  */
 function deepScanFiles($dir) {
 

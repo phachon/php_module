@@ -5,7 +5,6 @@
  */
 class File_Find {
 	
-	
 	protected static $_instance = NULL;
 
 	//单例
@@ -20,7 +19,7 @@ class File_Find {
 	/**
  	 * 取得输入目录所包含的所有目录和文件夹
  	 * @param  String $dir 查找的目录
- 	 * @return Array       关联数组返回
+ 	 * @return array       关联数组返回
  	 */
 	public function deepScanDirAndFiles($dir) {
 
@@ -49,7 +48,7 @@ class File_Find {
 	/**
 	 * 取得输入目录所包含的所有文件
 	 * @param  String $dir 查找的目录
-	 * @return Array       数组
+	 * @return array       数组
 	 */
 	public function deepScanFiles($dir) {
 

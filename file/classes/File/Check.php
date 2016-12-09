@@ -4,7 +4,6 @@
  * @author phachon@163.com
  */
 class File_Check {
-		
 	
 	protected static $_instance = NULL;
 
@@ -21,11 +20,12 @@ class File_Check {
 		}
 
 		return self::$_instance;
-	} 
+	}
 
 	/**
 	 * before
-	 * @param  string $fileUrl 
+	 * @param  string $fileUrl
+	 * @throws Exception
 	 */
 	private function _before($fileUrl) {
 		

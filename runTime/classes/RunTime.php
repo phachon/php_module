@@ -13,13 +13,22 @@
  */
 class RunTime {
 
-	//程序运行开始时间
+	/**
+	 * 程序运行开始时间
+	 * @var int
+	 */
 	static private $_startTime = 0;
 
-	//程序运行结束时间
+	/**
+	 * 程序运行结束时间
+	 * @var int
+	 */
 	static private $_topTime  = 0;
 
-	//程序运行花费时间
+	/**
+	 * 程序运行花费时间
+	 * @var int
+	 */
 	static private $_spentTime = 0;
 
 	/**
