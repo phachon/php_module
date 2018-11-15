@@ -17,11 +17,12 @@ class BLL {
 
 	/**
 	 * 分层调用控制重载方法
-	 * @param string $name
+	 * @param $className
 	 * @param array $arguments
 	 * @return BLL
+	 * @internal param string $name
 	 */
-	public static function __callstatic($className, $arguments = array()) {
+	public static function __callStatic($className, $arguments = array()) {
 		if(self::$_instance === NULL) {
 			$proxy = isset($arguments[0]) ? $arguments[0] : Kohana::$config->load('bll.proxy');
 			self::$_instance = new self($proxy);

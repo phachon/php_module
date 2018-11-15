@@ -20,7 +20,7 @@ class Business_Client_Result_Object extends Business_Client_Result implements Co
 			foreach($data as $row) {
 				$result[] = new $className($row);
 			}
-			
+				
 			$this->_asObject = $asObject;
 			$this->_result = $result;
 		} else {
